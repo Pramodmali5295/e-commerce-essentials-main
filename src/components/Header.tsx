@@ -21,9 +21,9 @@ const Header = () => {
 
   const navLinks = [
     { label: "Home", path: "/" },
+    { label: "About Us", path: "/about" },
     { label: "Shop", path: "/products" },
     { label: "Categories", path: "/products", hasDropdown: true },
-    { label: "Deals", path: "/products?sort=discount" },
     { label: "Contact", path: "/contact" },
   ];
 
@@ -82,9 +82,9 @@ const Header = () => {
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
 
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
-              <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center">
+            {/* Logo - Centered on mobile */}
+            <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity absolute left-1/2 -translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0">
+              <div className="w-8 h-8 rounded-lg gradient-gold flex items-center justify-center shadow-sm">
                 <span className="text-sm font-bold text-primary">S</span>
               </div>
               <span className="text-xl font-display font-bold text-foreground">ShopVista</span>
@@ -97,8 +97,6 @@ const Header = () => {
                   {link.hasDropdown ? (
                     <button
                       onClick={() => setCategoriesOpen(!categoriesOpen)}
-                      onMouseEnter={() => setCategoriesOpen(true)}
-                      onMouseLeave={() => setCategoriesOpen(false)}
                       className={`text-sm font-medium transition-colors hover:text-accent flex items-center gap-1 ${location.pathname === link.path ? "text-accent" : "text-muted-foreground"
                         }`}
                     >
@@ -108,10 +106,11 @@ const Header = () => {
                   ) : (
                     <Link
                       to={link.path}
-                      className={`text-sm font-medium transition-colors hover:text-accent flex items-center gap-1 ${location.pathname === link.path ? "text-accent" : "text-muted-foreground"
+                      className={`text-sm font-semibold transition-all hover:text-accent relative group py-2 ${location.pathname === link.path ? "text-accent" : "text-muted-foreground"
                         }`}
                     >
                       {link.label}
+                      <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transform origin-left transition-transform duration-300 ${location.pathname === link.path ? "scale-x-100" : "scale-x-0 hover:scale-x-100 group-hover:scale-x-100"}`} />
                     </Link>
                   )}
 
@@ -124,8 +123,6 @@ const Header = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2 }}
-                          onMouseEnter={() => setCategoriesOpen(true)}
-                          onMouseLeave={() => setCategoriesOpen(false)}
                           className="absolute top-full left-0 mt-2 w-56 glass rounded-xl shadow-premium py-2 z-50 overflow-hidden"
                         >
                           {categories.map((cat) => (
@@ -133,15 +130,19 @@ const Header = () => {
                               key={cat.id}
                               to={`/products?category=${cat.id}`}
                               onClick={() => setCategoriesOpen(false)}
-                              className="block px-4 py-2 text-sm text-muted-foreground hover:text-accent hover:bg-surface transition-colors"
+                              className="flex items-center gap-3 px-4 py-3 text-sm text-muted-foreground hover:text-accent hover:bg-surface transition-all group/item"
                             >
-                              <span className="mr-2">{cat.icon === "Smartphone" && "📱"}
-                                {cat.icon === "Shirt" && "👔"}
-                                {cat.icon === "Home" && "🏠"}
-                                {cat.icon === "Sparkles" && "✨"}
-                                {cat.icon === "Dumbbell" && "💪"}
-                                {cat.icon === "BookOpen" && "📚"}</span>
-                              {cat.name}
+                              <div className="w-8 h-8 rounded-lg bg-surface flex items-center justify-center group-hover/item:scale-110 transition-transform">
+                                <span className="text-base">
+                                  {cat.icon === "Smartphone" && "📱"}
+                                  {cat.icon === "Shirt" && "👔"}
+                                  {cat.icon === "Home" && "🏠"}
+                                  {cat.icon === "Sparkles" && "✨"}
+                                  {cat.icon === "Dumbbell" && "💪"}
+                                  {cat.icon === "BookOpen" && "📚"}
+                                </span>
+                              </div>
+                              <span className="font-medium">{cat.name}</span>
                             </Link>
                           ))}
                         </motion.div>

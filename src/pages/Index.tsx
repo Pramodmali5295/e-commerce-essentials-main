@@ -131,12 +131,12 @@ const Index = () => {
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-8 border-2 border-primary-foreground/20 rounded-full flex items-start justify-center p-1.5 shadow-inner"
+            className="w-5 h-8 border-2 border-accent/30 rounded-full flex items-start justify-center p-1.5 shadow-[inset_0_0_10px_rgba(231,185,115,0.2)]"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-1 bg-accent rounded-full"
+              className="w-1 h-1 bg-accent rounded-full shadow-[0_0_5px_rgba(231,185,115,0.8)]"
             />
           </motion.div>
         </motion.div>
@@ -147,42 +147,38 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Truck, label: "Free Shipping", sub: "On orders ₹999+", color: "from-blue-500/10 to-blue-600/10", iconColor: "text-blue-600" },
-              { icon: Shield, label: "Secure Payment", sub: "100% protected", color: "from-green-500/10 to-green-600/10", iconColor: "text-green-600" },
-              { icon: RotateCcw, label: "Easy Returns", sub: "7-day return", color: "from-orange-500/10 to-orange-600/10", iconColor: "text-orange-600" },
-              { icon: Headphones, label: "24/7 Support", sub: "Always available", color: "from-purple-500/10 to-purple-600/10", iconColor: "text-purple-600" },
-            ].map(({ icon: Icon, label, sub, color, iconColor }, index) => (
+              { icon: Truck, label: "Free Shipping", sub: "On orders ₹999+", color: "bg-blue-600 text-white border-blue-500 shadow-blue-900/20", iconColor: "text-blue-600", iconBg: "bg-white" },
+              { icon: Shield, label: "Secure Payment", sub: "100% protected", color: "bg-emerald-600 text-white border-emerald-500 shadow-emerald-900/20", iconColor: "text-emerald-600", iconBg: "bg-white" },
+              { icon: RotateCcw, label: "Easy Returns", sub: "7-day return", color: "bg-orange-600 text-white border-orange-500 shadow-orange-900/20", iconColor: "text-orange-600", iconBg: "bg-white" },
+              { icon: Headphones, label: "24/7 Support", sub: "Always available", color: "bg-purple-600 text-white border-purple-500 shadow-purple-900/20", iconColor: "text-purple-600", iconBg: "bg-white" },
+            ].map(({ icon: Icon, label, sub, color, iconColor, iconBg }, index) => (
               <motion.div
                 key={label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="group"
+                whileHover={{ y: -12, transition: { duration: 0.2 } }}
+                className="group h-full"
               >
-                <div className="relative h-full bg-card border border-border rounded-xl p-6 hover:border-accent/50 hover:shadow-lg transition-all duration-300">
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl`} />
+                <div className={`relative h-full ${color} border rounded-[2.5rem] p-8 hover:shadow-2xl transition-all duration-500 overflow-hidden shadow-xl`}>
+                  {/* Decorative Glow */}
+                  <div className={`absolute -right-6 -top-6 w-32 h-32 rounded-full bg-white opacity-20 blur-3xl group-hover:scale-150 transition-transform duration-700`} />
 
                   {/* Content */}
                   <div className="relative z-10 flex flex-col items-center text-center">
                     {/* Icon */}
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className={`w-14 h-14 rounded-full bg-gradient-to-br ${color} flex items-center justify-center mb-4 shadow-md`}
-                    >
-                      <Icon size={24} className={`${iconColor} group-hover:scale-110 transition-transform duration-300`} />
-                    </motion.div>
+                    <div className={`w-16 h-16 rounded-2xl ${iconBg} flex items-center justify-center mb-5 shadow-lg group-hover:rotate-[10deg] transition-transform duration-500`}>
+                      <Icon size={28} className={`${iconColor}`} />
+                    </div>
 
                     {/* Label */}
-                    <h3 className="text-base font-bold mb-1 group-hover:text-accent transition-colors duration-300">
+                    <h3 className="text-lg font-bold mb-1 leading-tight">
                       {label}
                     </h3>
 
                     {/* Subtitle */}
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm font-medium opacity-80 italic">
                       {sub}
                     </p>
                   </div>
@@ -202,16 +198,39 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-10 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mx-auto mb-2">Shop by <span className="text-accent">Category</span></h2>
-            <p className="text-muted-foreground text-sm max-w-lg mx-auto mb-6">Find exactly what you're looking for</p>
-            <Link
-              to="/products"
-              className="inline-flex text-sm font-medium text-accent hover:underline items-center gap-1 hover:gap-2 transition-all"
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mx-auto mb-2"
             >
-              View All <ChevronRight size={16} />
-            </Link>
+              Shop by <span className="text-accent">Category</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground text-sm max-w-lg mx-auto mb-6"
+            >
+              Find exactly what you're looking for
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Link
+                to="/products"
+                className="inline-flex text-sm font-medium text-accent hover:underline items-center gap-1 hover:gap-2 transition-all"
+              >
+                View All <ChevronRight size={16} />
+              </Link>
+            </motion.div>
           </motion.div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 text-center">
             {categories.map((cat, i) => (
               <motion.div
                 key={cat.id}
@@ -219,14 +238,17 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -8 }}
               >
                 <Link
                   to={`/products?category=${cat.id}`}
-                  className={`group block p-4 sm:p-5 ${cat.bgColor} rounded-xl border border-border transition-all duration-300 ${cat.hoverBorder} ${cat.shadowColor} hover:shadow-xl text-center`}
+                  className={`group relative block p-6 rounded-[2.5rem] border border-border/50 transition-all duration-500 hover:shadow-premium overflow-hidden ${cat.bgColor} ${cat.hoverBorder}`}
                 >
-                  <div className={`w-12 h-12 sm:w-14 sm:h-14 mx-auto rounded-xl flex items-center justify-center mb-3 transition-all duration-300 bg-white/80 group-hover:bg-white shadow-sm group-hover:scale-110`}>
-                    <span className={`text-xl sm:text-2xl transition-transform ${cat.iconColor}`}>
+                  {/* Subtle Background Tint on Hover */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${cat.bgColor}`} />
+
+                  <div className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-4 transition-all duration-500 ${cat.bgColor} shadow-sm group-hover:shadow-lg group-hover:scale-110 group-hover:rotate-3`}>
+                    <span className={`text-3xl transition-transform duration-500`}>
                       {cat.icon === "Smartphone" && "📱"}
                       {cat.icon === "Shirt" && "👔"}
                       {cat.icon === "Home" && "🏠"}
@@ -235,10 +257,12 @@ const Index = () => {
                       {cat.icon === "BookOpen" && "📚"}
                     </span>
                   </div>
-                  <h3 className="text-xs sm:text-sm font-semibold group-hover:text-accent transition-colors line-clamp-1">
+                  <h3 className="text-sm font-bold text-foreground mb-1 group-hover:text-accent transition-colors">
                     {cat.name}
                   </h3>
-                  <p className="text-xs text-muted-foreground mt-0.5 font-medium">{cat.productCount} items</p>
+                  <div className="inline-flex px-3 py-1 rounded-full bg-surface group-hover:bg-accent/10 transition-colors">
+                    <span className="text-[10px] text-muted-foreground group-hover:text-accent font-bold uppercase tracking-wider">{cat.productCount} Items</span>
+                  </div>
                 </Link>
               </motion.div>
             ))}
@@ -283,17 +307,38 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-10 sm:mb-12"
           >
-            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-accent/10 mb-6">
-              <TrendingUp size={24} className="text-accent sm:w-8 sm:h-8" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"><span className="text-accent">Trending</span> Now</h2>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-6">What everyone's buying</p>
-            <Link
-              to="/products"
-              className="inline-flex text-sm font-medium text-accent hover:underline items-center gap-1 hover:gap-2 transition-all"
+
+            <motion.h2
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"
             >
-              See All <ChevronRight size={16} />
-            </Link>
+              <span className="text-accent">Trending</span> Now
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-6"
+            >
+              What everyone's buying
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <Link
+                to="/products"
+                className="inline-flex text-sm font-medium text-accent hover:underline items-center gap-1 hover:gap-2 transition-all"
+              >
+                See All <ChevronRight size={16} />
+              </Link>
+            </motion.div>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {trendingProducts.map((p, i) => (
@@ -312,14 +357,37 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-10 sm:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"><span className="text-accent">Featured</span> Products</h2>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-6">Hand-picked just for you</p>
-            <Link
-              to="/products"
-              className="inline-flex text-sm font-medium text-accent hover:underline items-center gap-1 hover:gap-2 transition-all"
+            <motion.h2
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"
             >
-              View All <ChevronRight size={16} />
-            </Link>
+              <span className="text-accent">Featured</span> Products
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-6"
+            >
+              Hand-picked just for you
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <Link
+                to="/products"
+                className="inline-flex text-sm font-medium text-accent hover:underline items-center gap-1 hover:gap-2 transition-all"
+              >
+                View All <ChevronRight size={16} />
+              </Link>
+            </motion.div>
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {featuredProducts.map((p, i) => (
@@ -338,8 +406,24 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-8 sm:mb-10"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold">What Our <span className="text-accent">Customers</span> Say</h2>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">Real reviews from real people</p>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-display font-bold"
+            >
+              What Our <span className="text-accent">Customers</span> Say
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground text-xs sm:text-sm mt-1"
+            >
+              Real reviews from real people
+            </motion.p>
           </motion.div>
 
           {/* Carousel Container */}
@@ -356,12 +440,24 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center max-w-2xl mx-auto"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2">
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-2xl sm:text-3xl md:text-4xl font-display font-bold mb-2"
+            >
               Get <span className="text-accent">10% Off</span> Your First Order
-            </h2>
-            <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8"
+            >
               Subscribe to our newsletter for exclusive offers and updates
-            </p>
+            </motion.p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"

@@ -55,7 +55,7 @@ export const categories: Category[] = [
     icon: "Smartphone",
     subCategories: ["Phones", "Laptops", "Audio", "Cameras"],
     productCount: 245,
-    bgColor: "bg-blue-50",
+    bgColor: "bg-blue-200",
     iconColor: "text-blue-600",
     hoverBorder: "hover:border-blue-400",
     shadowColor: "hover:shadow-blue-500/20"
@@ -66,7 +66,7 @@ export const categories: Category[] = [
     icon: "Shirt",
     subCategories: ["Men", "Women", "Kids", "Accessories"],
     productCount: 892,
-    bgColor: "bg-amber-50",
+    bgColor: "bg-amber-200",
     iconColor: "text-amber-600",
     hoverBorder: "hover:border-amber-400",
     shadowColor: "hover:shadow-amber-500/20"
@@ -77,7 +77,7 @@ export const categories: Category[] = [
     icon: "Home",
     subCategories: ["Furniture", "Decor", "Kitchen", "Bedding"],
     productCount: 534,
-    bgColor: "bg-emerald-50",
+    bgColor: "bg-emerald-200",
     iconColor: "text-emerald-600",
     hoverBorder: "hover:border-emerald-400",
     shadowColor: "hover:shadow-emerald-500/20"
@@ -88,7 +88,7 @@ export const categories: Category[] = [
     icon: "Sparkles",
     subCategories: ["Skincare", "Makeup", "Fragrance", "Hair Care"],
     productCount: 312,
-    bgColor: "bg-rose-50",
+    bgColor: "bg-rose-200",
     iconColor: "text-rose-600",
     hoverBorder: "hover:border-rose-400",
     shadowColor: "hover:shadow-rose-500/20"
@@ -99,7 +99,7 @@ export const categories: Category[] = [
     icon: "Dumbbell",
     subCategories: ["Fitness", "Outdoor", "Sportswear", "Equipment"],
     productCount: 198,
-    bgColor: "bg-orange-50",
+    bgColor: "bg-orange-200",
     iconColor: "text-orange-600",
     hoverBorder: "hover:border-orange-400",
     shadowColor: "hover:shadow-orange-500/20"
@@ -110,7 +110,7 @@ export const categories: Category[] = [
     icon: "BookOpen",
     subCategories: ["Fiction", "Non-Fiction", "Academic", "Comics"],
     productCount: 1024,
-    bgColor: "bg-indigo-50",
+    bgColor: "bg-indigo-200",
     iconColor: "text-indigo-600",
     hoverBorder: "hover:border-indigo-400",
     shadowColor: "hover:shadow-indigo-500/20"

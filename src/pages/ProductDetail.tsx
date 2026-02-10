@@ -50,13 +50,13 @@ const ProductDetail = () => {
       <div className="bg-surface border-b border-border">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap">
-            <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
-            <ChevronRight size={12} />
-            <Link to="/products" className="hover:text-foreground transition-colors">Products</Link>
-            <ChevronRight size={12} />
-            <Link to={`/products?category=${product.category}`} className="hover:text-foreground transition-colors capitalize">{product.category}</Link>
-            <ChevronRight size={12} />
-            <span className="text-foreground font-medium truncate">{product.name}</span>
+            <Link to="/" className="hover:text-accent transition-colors font-medium">Home</Link>
+            <ChevronRight size={12} className="opacity-50" />
+            <Link to="/products" className="hover:text-accent transition-colors font-medium">Products</Link>
+            <ChevronRight size={12} className="opacity-50" />
+            <Link to={`/products?category=${product.category}`} className="hover:text-accent transition-colors capitalize font-medium">{product.category}</Link>
+            <ChevronRight size={12} className="opacity-50" />
+            <span className="text-accent font-bold truncate">{product.name}</span>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ const ProductDetail = () => {
 
             {/* Price */}
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="text-3xl font-bold">₹{product.price.toLocaleString("en-IN")}</span>
+              <span className="text-3xl sm:text-4xl font-bold text-accent">₹{product.price.toLocaleString("en-IN")}</span>
               {product.originalPrice && (
                 <>
                   <span className="text-lg text-muted-foreground line-through">₹{product.originalPrice.toLocaleString("en-IN")}</span>
@@ -147,9 +147,15 @@ const ProductDetail = () => {
             {/* Stock */}
             <div className="mb-6">
               {product.inStock ? (
-                <p className="text-sm text-success font-medium">✓ In Stock ({product.stockCount} available)</p>
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 rounded-full w-fit">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <p className="text-xs text-emerald-600 font-bold uppercase tracking-wider">In Stock ({product.stockCount} available)</p>
+                </div>
               ) : (
-                <p className="text-sm text-destructive font-medium">✗ Out of Stock</p>
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-rose-500/10 rounded-full w-fit">
+                  <div className="w-2 h-2 rounded-full bg-rose-500" />
+                  <p className="text-xs text-rose-600 font-bold uppercase tracking-wider">Out of Stock</p>
+                </div>
               )}
             </div>
 
@@ -177,15 +183,17 @@ const ProductDetail = () => {
             </div>
 
             {/* Trust */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-surface rounded-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-surface rounded-xl border border-border/50">
               {[
-                { icon: Truck, label: "Free Delivery" },
-                { icon: Shield, label: "Genuine Product" },
-                { icon: RotateCcw, label: "7-Day Return" },
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center sm:flex-col gap-2 sm:gap-1 text-left sm:text-center">
-                  <Icon size={18} className="text-accent flex-shrink-0" />
-                  <span className="text-xs sm:text-xs text-muted-foreground">{label}</span>
+                { icon: Truck, label: "Free Delivery", color: "text-blue-500" },
+                { icon: Shield, label: "Genuine Product", color: "text-emerald-500" },
+                { icon: RotateCcw, label: "7-Day Return", color: "text-orange-500" },
+              ].map(({ icon: Icon, label, color }) => (
+                <div key={label} className="flex items-center sm:flex-col gap-3 sm:gap-1 text-left sm:text-center group/trust">
+                  <div className={`p-2 rounded-lg bg-white/50 shadow-inner-soft group-hover/trust:scale-110 transition-transform`}>
+                    <Icon size={18} className={`${color}`} />
+                  </div>
+                  <span className="text-[11px] sm:text-xs text-muted-foreground font-medium">{label}</span>
                 </div>
               ))}
             </div>

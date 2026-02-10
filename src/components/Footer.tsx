@@ -4,12 +4,7 @@ import { categories } from "@/data/products";
 
 const Footer = () => {
 
-  const socialLinks = [
-    { icon: Facebook, label: "Facebook", url: "https://facebook.com", color: "#1877F2" },
-    { icon: Instagram, label: "Instagram", url: "https://instagram.com", color: "#E4405F" },
-    { icon: Twitter, label: "Twitter", url: "https://twitter.com", color: "#1DA1F2" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com", color: "#0A66C2" },
-  ];
+
 
   const customerServiceLinks = [
     { label: "Contact Us", path: "/contact" },
@@ -60,7 +55,7 @@ const Footer = () => {
 
           {/* Categories */}
           <div className="mb-4 lg:mb-0">
-            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent lg:text-primary-foreground">Shop</h4>
+            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent lg:text-accent">Shop</h4>
             <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-2 lg:gap-y-1">
               {categories.map((cat) => (
                 <li key={cat.id}>
@@ -76,9 +71,9 @@ const Footer = () => {
           </div>
 
           {/* Customer Service */}
-          <div>
-            <h4 className="font-display font-semibold mb-2 text-sm uppercase tracking-wider">Support</h4>
-            <ul className="space-y-1">
+          <div className="mb-4 lg:mb-0">
+            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent">Support</h4>
+            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-2 lg:gap-y-1">
               {customerServiceLinks.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -94,7 +89,7 @@ const Footer = () => {
 
           {/* Quick Links + Social Media */}
           <div>
-            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent lg:text-primary-foreground">Links</h4>
+            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent">Links</h4>
             <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-2 lg:gap-y-1 mb-6 lg:mb-4">
               {quickLinks.map((link) => (
                 <li key={link.label}>
@@ -108,26 +103,7 @@ const Footer = () => {
               ))}
             </ul>
 
-            <h5 className="text-[12px] font-bold uppercase tracking-widest opacity-60 mb-4 lg:mb-3">Follow Us</h5>
-            <div className="flex gap-4 flex-wrap">
-              {socialLinks.map(({ icon: Icon, label, url, color }) => (
-                <a
-                  key={label}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  style={{ '--brand-color': color } as React.CSSProperties}
-                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center transition-all hover:scale-110 group"
-                >
-                  <Icon
-                    size={16}
-                    className="transition-colors group-hover:text-[var(--brand-color)]"
-                    style={{ color: 'inherit' }}
-                  />
-                </a>
-              ))}
-            </div>
+
           </div>
         </div>
 
