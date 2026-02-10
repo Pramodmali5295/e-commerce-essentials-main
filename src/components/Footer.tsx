@@ -27,8 +27,8 @@ const Footer = () => {
 
   return (
     <footer className="gradient-navy text-primary-foreground">
-      <div className="container mx-auto px-4 py-4 sm:py-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
+      <div className="container mx-auto px-4 py-6 sm:py-8 lg:py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6">
           {/* Brand - Takes 2 columns on large screens */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-2 w-fit">
@@ -132,21 +132,18 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-6 pt-4 border-t border-primary-foreground/10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-60">
-            <p className="text-center sm:text-left">
-              © {new Date().getFullYear()} ShopVista. All rights reserved. Made with ❤️ in India.
-            </p>
-            <div className="flex gap-4 flex-wrap justify-center">
-              <Link to="/privacy" className="hover:opacity-100 hover:text-accent transition-all">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:opacity-100 hover:text-accent transition-all">
-                Terms of Service
-              </Link>
-              <Link to="/sitemap" className="hover:opacity-100 hover:text-accent transition-all">
-                Sitemap
-              </Link>
+        <div className="mt-8 pt-6 border-t border-primary-foreground/10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] sm:text-xs opacity-60">
+            <div className="text-center md:text-left">
+              <p>© {new Date().getFullYear()} ShopVista. All rights reserved.</p>
+              <p className="mt-1 font-medium uppercase tracking-wider">Made with ❤️ in India</p>
+            </div>
+
+            <div className="flex gap-4 sm:gap-6 flex-wrap justify-center font-medium">
+              <Link to="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
+              <Link to="/shipping" className="hover:text-accent transition-colors">Shipping</Link>
+              <Link to="/sitemap" className="hover:text-accent transition-colors">Sitemap</Link>
             </div>
           </div>
         </div>
