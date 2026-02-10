@@ -37,7 +37,7 @@ const Index = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
             >
-              <span className="inline-block px-4 py-2 text-sm font-semibold gradient-gold text-primary rounded-full mb-6 shadow-lg">
+              <span className="inline-block px-5 py-2.5 text-xs font-bold gradient-gold text-primary rounded-full mb-8 shadow-premium uppercase tracking-widest">
                 🔥 Summer Sale — Up to 60% Off
               </span>
             </motion.div>
@@ -129,14 +129,14 @@ const Index = () => {
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-primary-foreground/30 rounded-full flex items-start justify-center p-2"
+            className="w-5 h-8 border-2 border-primary-foreground/20 rounded-full flex items-start justify-center p-1.5 shadow-inner"
           >
             <motion.div
-              animate={{ y: [0, 12, 0] }}
+              animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-primary-foreground/60 rounded-full"
+              className="w-1 h-1 bg-accent rounded-full"
             />
           </motion.div>
         </motion.div>

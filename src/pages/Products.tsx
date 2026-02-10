@@ -112,10 +112,10 @@ const Products = () => {
 
         <div className="flex gap-6">
           {/* Sidebar filters */}
-          <aside className={`${showFilters ? "fixed inset-0 z-50 bg-card p-6 overflow-y-auto" : "hidden"} lg:block lg:static lg:w-56 flex-shrink-0`}>
-            <div className="flex items-center justify-between lg:hidden mb-4">
-              <span className="font-display font-semibold text-lg">Filters</span>
-              <button onClick={() => setShowFilters(false)}><X size={20} /></button>
+          <aside className={`${showFilters ? "fixed inset-0 z-[100] glass p-6 overflow-y-auto" : "hidden"} lg:block lg:static lg:w-56 flex-shrink-0 transition-all`}>
+            <div className="flex items-center justify-between lg:hidden mb-6">
+              <span className="font-display font-bold text-xl">Filters</span>
+              <button onClick={() => setShowFilters(false)} className="p-2 hover:bg-surface rounded-full transition-colors"><X size={24} /></button>
             </div>
 
             {/* Categories */}
@@ -159,7 +159,7 @@ const Products = () => {
               </label>
             </div>
 
-            <button onClick={() => setShowFilters(false)} className="lg:hidden w-full py-2.5 gradient-gold text-primary font-semibold rounded-lg text-sm mt-4">
+            <button onClick={() => setShowFilters(false)} className="lg:hidden w-full py-3.5 gradient-gold text-primary font-bold rounded-xl text-sm mt-8 shadow-lg">
               Apply Filters
             </button>
           </aside>

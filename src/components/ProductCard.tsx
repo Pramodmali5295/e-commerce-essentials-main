@@ -27,7 +27,7 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group bg-card rounded-xl border border-border overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300"
+      className="group bg-card rounded-2xl border border-border/50 overflow-hidden shadow-sm hover:shadow-premium transition-all duration-500"
     >
       {/* Image */}
       <Link to={`/product/${product.id}`} className="block relative aspect-square bg-surface overflow-hidden">
@@ -54,21 +54,21 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
         {/* Wishlist */}
         <button
           onClick={handleWishlistToggle}
-          className={`absolute top-2 right-2 p-2 rounded-full backdrop-blur-sm transition-all z-10 
-            ${isWishlisted ? "bg-rose-500 text-white opacity-100" : "bg-card/80 text-muted-foreground opacity-0 group-hover:opacity-100 hover:bg-card hover:text-rose-500 shadow-sm"}`}
+          className={`absolute top-2 right-2 p-2 rounded-full glass transition-all z-10 
+            ${isWishlisted ? "bg-rose-500 text-white opacity-100" : "text-muted-foreground opacity-0 group-hover:opacity-100 hover:text-rose-500 shadow-sm"}`}
         >
-          <Heart size={16} fill={isWishlisted ? "currentColor" : "none"} className={isWishlisted ? "scale-110" : ""} />
+          <Heart size={16} fill={isWishlisted ? "currentColor" : "none"} className={`transition-transform duration-300 ${isWishlisted ? "scale-110" : "scale-100 active:scale-125"}`} />
         </button>
 
         {/* Quick add */}
-        <div className="absolute bottom-0 inset-x-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10">
+        <div className="absolute bottom-2 inset-x-2 translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 z-10">
           <button
             onClick={(e) => {
               e.preventDefault();
               if (product.inStock) addItem(product);
             }}
             disabled={!product.inStock}
-            className="w-full py-2.5 text-sm font-semibold gradient-gold text-primary disabled:opacity-50"
+            className="w-full py-2 text-xs font-bold gradient-gold text-primary disabled:opacity-50 rounded-lg shadow-lg"
           >
             {product.inStock ? "Add to Cart" : "Out of Stock"}
           </button>

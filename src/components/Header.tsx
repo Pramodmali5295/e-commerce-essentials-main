@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ShoppingCart, Search, Menu, X, Heart, ChevronDown } from "lucide-react";
+import { ShoppingCart, Search, Menu, X, Heart, ChevronDown, ChevronRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,6 +14,7 @@ const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const location = useLocation();
   const navigate = useNavigate();
@@ -69,9 +70,9 @@ const Header = () => {
       </div>
 
       {/* Main header */}
-      <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+      <header className="sticky top-0 z-50 glass border-b border-border shadow-sm">
+        <div className="container mx-auto px-1.5 sm:px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Mobile menu */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -125,7 +126,7 @@ const Header = () => {
                           transition={{ duration: 0.2 }}
                           onMouseEnter={() => setCategoriesOpen(true)}
                           onMouseLeave={() => setCategoriesOpen(false)}
-                          className="absolute top-full left-0 mt-2 w-56 bg-card border border-border rounded-lg shadow-elevated py-2 z-50"
+                          className="absolute top-full left-0 mt-2 w-56 glass rounded-xl shadow-premium py-2 z-50 overflow-hidden"
                         >
                           {categories.map((cat) => (
                             <Link
@@ -161,7 +162,7 @@ const Header = () => {
                     placeholder="Search products, brands..."
                     value={searchQuery}
                     onChange={(e) => handleSearchInput(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 text-sm bg-surface rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
+                    className="w-full pl-10 pr-4 py-2 text-sm bg-surface/50 rounded-full border border-border focus:outline-none focus:ring-4 focus:ring-accent/10 focus:border-accent transition-all"
                   />
                   {searchQuery && (
                     <button
@@ -259,10 +260,10 @@ const Header = () => {
         <AnimatePresence>
           {searchOpen && (
             <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: "auto" }}
-              exit={{ height: 0 }}
-              className="overflow-hidden md:hidden border-t border-border bg-card"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="overflow-hidden md:hidden border-t border-border glass"
             >
               <div className="p-4">
                 <form onSubmit={handleSearch}>
@@ -338,24 +339,49 @@ const Header = () => {
                     {link.label}
                   </Link>
                 ))}
-                <div className="pt-3 border-t border-border mt-3">
-                  <p className="px-3 text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Categories</p>
-                  {categories.map((cat) => (
-                    <Link
-                      key={cat.id}
-                      to={`/products?category=${cat.id}`}
-                      onClick={() => setMobileOpen(false)}
-                      className="block px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-surface rounded-lg transition-colors"
-                    >
-                      <span className="mr-2">{cat.icon === "Smartphone" && "📱"}
-                        {cat.icon === "Shirt" && "👔"}
-                        {cat.icon === "Home" && "🏠"}
-                        {cat.icon === "Sparkles" && "✨"}
-                        {cat.icon === "Dumbbell" && "💪"}
-                        {cat.icon === "BookOpen" && "📚"}</span>
-                      {cat.name}
-                    </Link>
-                  ))}
+                <div className="pt-2 border-t border-border mt-3">
+                  <button
+                    onClick={() => setMobileCategoriesOpen(!mobileCategoriesOpen)}
+                    className="w-full flex items-center justify-between px-3 py-3 text-xs font-bold text-muted-foreground uppercase tracking-wider hover:bg-surface rounded-lg transition-colors"
+                  >
+                    Categories
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${mobileCategoriesOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  <AnimatePresence>
+                    {mobileCategoriesOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden px-1"
+                      >
+                        <div className="py-2 grid grid-cols-1 gap-1">
+                          {categories.map((cat) => (
+                            <Link
+                              key={cat.id}
+                              to={`/products?category=${cat.id}`}
+                              onClick={() => {
+                                setMobileOpen(false);
+                                setMobileCategoriesOpen(false);
+                              }}
+                              className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-accent hover:bg-surface rounded-lg transition-colors"
+                            >
+                              <span className="text-lg">
+                                {cat.icon === "Smartphone" && "📱"}
+                                {cat.icon === "Shirt" && "👔"}
+                                {cat.icon === "Home" && "🏠"}
+                                {cat.icon === "Sparkles" && "✨"}
+                                {cat.icon === "Dumbbell" && "💪"}
+                                {cat.icon === "BookOpen" && "📚"}
+                              </span>
+                              {cat.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </nav>
             </motion.div>
