@@ -37,31 +37,31 @@ const Footer = () => {
               </div>
               <span className="text-2xl font-display font-bold">ShopVista</span>
             </Link>
-            <p className="text-xs opacity-70 leading-relaxed mb-3 max-w-sm">
+            <p className="text-sm opacity-70 leading-relaxed mb-6 lg:mb-4 max-w-sm">
               Your premium destination for quality products at unbeatable prices. Shop with confidence.
             </p>
 
             {/* Contact Info */}
-            <div className="space-y-1 mb-3">
-              <a href="tel:18001234567" className="flex items-center gap-2 text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all w-fit">
-                <Phone size={16} className="flex-shrink-0" />
+            <div className="space-y-3 mb-8 lg:mb-4">
+              <a href="tel:18001234567" className="flex items-center gap-3 text-base sm:text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all w-fit">
+                <Phone size={18} className="flex-shrink-0" />
                 <span>1800-123-4567</span>
               </a>
-              <a href="mailto:support@shopvista.com" className="flex items-center gap-2 text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all w-fit">
-                <Mail size={16} className="flex-shrink-0" />
+              <a href="mailto:support@shopvista.com" className="flex items-center gap-3 text-base sm:text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all w-fit">
+                <Mail size={18} className="flex-shrink-0" />
                 <span>support@shopvista.com</span>
               </a>
-              <div className="flex items-start gap-2 text-sm opacity-80">
-                <MapPin size={16} className="flex-shrink-0 mt-0.5" />
+              <div className="flex items-start gap-3 text-base sm:text-sm opacity-80">
+                <MapPin size={18} className="flex-shrink-0 mt-1" />
                 <span>123 Shopping Street, Mumbai, India 400001</span>
               </div>
             </div>
           </div>
 
           {/* Categories */}
-          <div>
-            <h4 className="font-display font-semibold mb-2 text-sm uppercase tracking-wider">Shop</h4>
-            <ul className="space-y-1">
+          <div className="mb-4 lg:mb-0">
+            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent lg:text-primary-foreground">Shop</h4>
+            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-2 lg:gap-y-1">
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <Link
@@ -94,13 +94,13 @@ const Footer = () => {
 
           {/* Quick Links + Social Media */}
           <div>
-            <h4 className="font-display font-semibold mb-2 text-sm uppercase tracking-wider">Links</h4>
-            <ul className="space-y-1 mb-3">
+            <h4 className="font-display font-bold mb-4 lg:mb-3 text-base sm:text-sm uppercase tracking-wider text-accent lg:text-primary-foreground">Links</h4>
+            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-2 lg:gap-y-1 mb-6 lg:mb-4">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all inline-block hover:translate-x-1"
+                    className="text-base sm:text-sm opacity-80 hover:opacity-100 hover:text-accent transition-all inline-block hover:translate-x-1"
                   >
                     {link.label}
                   </Link>
@@ -108,8 +108,8 @@ const Footer = () => {
               ))}
             </ul>
 
-            <h5 className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-2">Follow Us</h5>
-            <div className="flex gap-2 flex-wrap">
+            <h5 className="text-[12px] font-bold uppercase tracking-widest opacity-60 mb-4 lg:mb-3">Follow Us</h5>
+            <div className="flex gap-4 flex-wrap">
               {socialLinks.map(({ icon: Icon, label, url, color }) => (
                 <a
                   key={label}
@@ -132,11 +132,11 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-6 border-t border-primary-foreground/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] sm:text-xs opacity-60">
+        <div className="mt-12 pt-8 border-t border-primary-foreground/10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-sm sm:text-xs opacity-60">
             <div className="text-center md:text-left">
-              <p>© {new Date().getFullYear()} ShopVista. All rights reserved.</p>
-              <p className="mt-1 font-medium uppercase tracking-wider">Made with ❤️ in India</p>
+              <p className="font-medium">© {new Date().getFullYear()} ShopVista. All rights reserved.</p>
+              <p className="mt-2 font-bold uppercase tracking-widest text-[11px]">Made with ❤️ in India</p>
             </div>
 
             <div className="flex gap-4 sm:gap-6 flex-wrap justify-center font-medium">
