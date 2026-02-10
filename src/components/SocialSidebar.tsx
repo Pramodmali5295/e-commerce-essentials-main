@@ -10,7 +10,7 @@ const SocialSidebar = () => {
     ];
 
     return (
-        <div className="fixed right-2 top-1/2 -translate-y-1/2 z-[100] flex flex-col gap-3 p-0 group pointer-events-none">
+        <div className="fixed right-2 top-1/2 -translate-y-1/2 z-[100] hidden sm:flex flex-col gap-3 p-0 group pointer-events-none">
             {socialLinks.map(({ icon: Icon, label, url, color }, idx) => (
                 <motion.a
                     key={label}
