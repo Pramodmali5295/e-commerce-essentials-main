@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Linkedin, Phone, MapPin, Mail, ChevronRight, CreditCard, ShieldCheck, Zap } from "lucide-react";
+import { Phone, MapPin, Mail, ChevronRight, CreditCard, ShieldCheck, Zap } from "lucide-react";
 import { categories } from "@/data/products";
 import { motion } from "framer-motion";
 
@@ -16,13 +16,6 @@ const Footer = () => {
     { label: "About Us", path: "/about" },
     { label: "Careers", path: "/careers" },
     { label: "Official Blog", path: "/blog" },
-  ];
-
-  const socialLinks = [
-    { icon: Facebook, label: "Facebook", color: "hover:bg-[#1877F2]" },
-    { icon: Instagram, label: "Instagram", color: "hover:bg-[#E4405F]" },
-    { icon: Twitter, label: "Twitter", color: "hover:bg-[#1DA1F2]" },
-    { icon: Linkedin, label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
   ];
 
   return (
@@ -61,20 +54,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href="#"
-                  whileHover={{ y: -4 }}
-                  className={`w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all ${social.color} hover:border-transparent group`}
-                  aria-label={social.label}
-                >
-                  <social.icon size={18} className="opacity-70 group-hover:opacity-100 transition-opacity" />
-                </motion.a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Shop - Spans 2 columns */}

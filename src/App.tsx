@@ -8,6 +8,7 @@ import { WishlistProvider } from "@/context/WishlistContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
+import SocialSidebar from "@/components/SocialSidebar";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Products from "./pages/Products";
@@ -38,6 +39,7 @@ const App = () => (
             <ScrollToTop />
             <Header />
             <CartSidebar />
+            <SocialSidebar />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/products" element={<Products />} />
