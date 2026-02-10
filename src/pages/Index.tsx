@@ -230,7 +230,7 @@ const Index = () => {
               </Link>
             </motion.div>
           </motion.div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 text-center">
             {categories.map((cat, i) => (
               <motion.div
                 key={cat.id}
@@ -340,7 +340,7 @@ const Index = () => {
               </Link>
             </motion.div>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {trendingProducts.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
@@ -389,7 +389,7 @@ const Index = () => {
               </Link>
             </motion.div>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
             {featuredProducts.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />
             ))}
