@@ -73,7 +73,7 @@ const About = () => {
                 </div>
 
                 {/* Performance Grid / Stats */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-24">
                     {stats.map((stat, idx) => (
                         <motion.div
                             key={idx}
